@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
+import { Button } from '@mantine/core';
 
 import { v4 as uuid } from 'uuid';
 
@@ -20,15 +21,15 @@ const ToDo = () => {
   }
 
   function deleteItem(id) {
-    const items = list.filter( item => item.id !== id );
+    const items = list.filter(item => item.id !== id);
     setList(items);
   }
 
   function toggleComplete(id) {
 
-    const items = list.map( item => {
-      if ( item.id === id ) {
-        item.complete = ! item.complete;
+    const items = list.map(item => {
+      if (item.id === id) {
+        item.complete = !item.complete;
       }
       return item;
     });
@@ -44,7 +45,7 @@ const ToDo = () => {
     // linter will want 'incomplete' added to dependency array unnecessarily. 
     // disable code used to avoid linter warning 
     // eslint-disable-next-line react-hooks/exhaustive-deps 
-  }, [list]);  
+  }, [list]);
 
   return (
     <>
@@ -72,7 +73,8 @@ const ToDo = () => {
         </label>
 
         <label>
-          <button type="submit">Add Item</button>
+          {/* <button type="submit">Add Item</button> */}
+          <Button type="submit" color="blue">Add Item</Button>
         </label>
       </form>
 
