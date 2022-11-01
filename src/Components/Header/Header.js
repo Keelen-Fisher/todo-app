@@ -1,23 +1,29 @@
-import { createStyles, Header, Container } from '@mantine/core';
+import { createStyles, Header, Container, Navbar, Text } from '@mantine/core';
 import React from 'react';
 
 const useStyles = createStyles((theme) => ({
-  header: {
-    backgroundColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
+  navbar: {
+    backgroundColor: theme.fn.variant({ color: theme.primaryColor }).background,
     borderBottom: 0,
     color: theme.white,
-    padding: theme.spacing.md,
+    padding: theme.spacing.sm,
     fontSize: theme.fontSizes.lg,
     fontWeight: 500,
-    marginTop: '10px',
-    marginBottom: '0px'
   },
 
   inner: {
     height: 56,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  },
+
+  h1: {
+    backgroundColor: theme.colors.gray[8],
+    color: theme.colors.gray[0],
+    fontSize: theme.fontSizes.xl,
+    fontWeight: 'bold',
+    margin: 'auto',
+    padding: theme.spacing.md,
+    width: '80%',
+
   },
 }));
 
@@ -26,17 +32,16 @@ function HeaderUI () {
   const { classes } = useStyles();
   return (
     <>
-      <Header height={56} className={classes.header} mb={120}>
-        <Container>
-          <div className={classes.inner}>
+      <Header>
+          <Navbar className={classes.navbar}>
+           <Text>
             Home
-          </div>
-        </Container>
+            </Text> 
+          </Navbar>
       </Header>
     </>
   );
 }
-
 
 
 

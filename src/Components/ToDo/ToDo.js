@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
-import { Card, Grid, Text, TextInput, createStyles, Button, Slider, Badge, CloseButton, Group } from '@mantine/core';
+import List from '../List/List.js';
+import { Card, Grid, Text, TextInput, createStyles, Button, Slider } from '@mantine/core';
 import { v4 as uuid } from 'uuid';
 
 const useStyles = createStyles((theme) => ({
@@ -16,7 +17,8 @@ const useStyles = createStyles((theme) => ({
     margin: 'auto',
     padding: theme.spacing.md,
     width: '80%',
-
+    marginBottom: theme.spacing.md,
+    marginTop: theme.spacing.md
   },
 
   header: {
@@ -81,7 +83,7 @@ const ToDo = () => {
       </header>
       <Grid style={{ width: '80%', margin: 'auto' }}>
         <Grid.Col xs={12} sm={4}>
-          <Card withBorder p="xs">
+          <Card withBorder p="xs" shadow="md" radius="sm" pb="xs" mb="sm">
             <Text className={classes.formHeading}>Add To Do Item</Text>
             <form onSubmit={handleSubmit}>
 
@@ -117,32 +119,11 @@ const ToDo = () => {
             </form>
           </Card>
         </Grid.Col>
+        <Grid.Col xs={12} sm={8}>
+          <List list={list} toggleComplete={toggleComplete} deleteItem={deleteItem} />
+        </Grid.Col>
       </Grid>
 
-      {list.map(item => (
-        <Card  key={item.id} shadow="md" radius="sm" pb="xs" mb="sm">
-          <Group position="apart">
-            <Group  flex-wrap="wrap-reverse">
-              <CloseButton
-                onClick={() => deleteItem(item.id)} />
-              <Badge
-                color="green"
-                variant="filled"
-                className={classes.badge}
-                onClick={() => toggleComplete(item._id)}
-              >
-                Pending
-              </Badge>
-              <p>{item.text}</p>
-              <p><small>Assigned to: {item.assignee}</small></p>
-              <p><small>Difficulty: {item.difficulty}</small></p>
-              <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
-              <hr />
-            </Group>
-          </Group>
-        </Card>
-      ))
-      }
 
     </>
   );

@@ -92,6 +92,8 @@
 
 ## Resources
 
+- List modularized with the Help from Class 32 Lecture
+
 - Example of the complete React App. [Link](https://todo-401-js.netlify.app/)
 
 - Mantine UI Recourses [HOME](https://mantine.dev/pages/getting-started/)
