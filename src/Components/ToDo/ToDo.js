@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
-import { Card, Grid, Text, TextInput, createStyles, Button, Slider, List } from '@mantine/core';
+import { Card, Grid, Text, TextInput, createStyles, Button, Slider, Badge, CloseButton, Group } from '@mantine/core';
 import { v4 as uuid } from 'uuid';
 
 const useStyles = createStyles((theme) => ({
@@ -16,13 +16,21 @@ const useStyles = createStyles((theme) => ({
     margin: 'auto',
     padding: theme.spacing.md,
     width: '80%',
-    
+
   },
 
   header: {
-    
-  }
+    marginTop: '0px'
+  },
+
+  badge: {
+    textTransform: 'capitalize',
+    fontSize: theme.fontSizes.xs,
+    margin: '3px'
+  },
 }));
+
+
 
 const ToDo = () => {
   const { classes } = useStyles();
@@ -58,6 +66,8 @@ const ToDo = () => {
 
   }
 
+
+
   useEffect(() => {
     let incompleteCount = list.filter(item => !item.complete).length;
     setIncomplete(incompleteCount);
@@ -66,7 +76,7 @@ const ToDo = () => {
 
   return (
     <>
-      <header data-testid="todo-header">
+      <header className={classes.header} data-testid="todo-header">
         <h1 className={classes.h1} data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
       </header>
       <Grid style={{ width: '80%', margin: 'auto' }}>
@@ -99,7 +109,7 @@ const ToDo = () => {
                 max={5}
                 name="difficulty"
               />
-              
+
               <label>
                 {/* <button type="submit">Add Item</button> */}
                 <Button type="submit" color="blue">Add Item</Button>
@@ -109,22 +119,30 @@ const ToDo = () => {
         </Grid.Col>
       </Grid>
 
-      <List/>
       {list.map(item => (
-        <div key={item.id}>
-          <p>{item.text}</p>
-          <p><small>Assigned to: {item.assignee}</small></p>
-          <p><small>Difficulty: {item.difficulty}</small></p>
-          <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
-          <hr />
-        </div>
-      ))}
-
-      {/* <List
-        list={list}
-        toggleComplete={toggleComplete}
-        deleteItem={deleteItem}
-      /> */}
+        <Card  key={item.id} shadow="md" radius="sm" pb="xs" mb="sm">
+          <Group position="apart">
+            <Group  flex-wrap="wrap-reverse">
+              <CloseButton
+                onClick={() => deleteItem(item.id)} />
+              <Badge
+                color="green"
+                variant="filled"
+                className={classes.badge}
+                onClick={() => toggleComplete(item._id)}
+              >
+                Pending
+              </Badge>
+              <p>{item.text}</p>
+              <p><small>Assigned to: {item.assignee}</small></p>
+              <p><small>Difficulty: {item.difficulty}</small></p>
+              <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
+              <hr />
+            </Group>
+          </Group>
+        </Card>
+      ))
+      }
 
     </>
   );

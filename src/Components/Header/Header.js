@@ -1,4 +1,4 @@
-import { createStyles, Header, Center, Container } from '@mantine/core';
+import { createStyles, Header, Container } from '@mantine/core';
 import React from 'react';
 
 const useStyles = createStyles((theme) => ({
@@ -9,6 +9,7 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.md,
     fontSize: theme.fontSizes.lg,
     fontWeight: 500,
+    marginTop: '10px',
     marginBottom: '0px'
   },
 
