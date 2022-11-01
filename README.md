@@ -84,7 +84,7 @@
 
 ## Deployment
 
-[Linked to Deployed Site (Using SandBox)](https://codesandbox.io/p/github/Keelen-Fisher/todo-app/draft/billowing-cache?file=%2Fpublic%2Fassets%2FUML+Rough+Draft+for+Lab+31.png)
+[Linked to Deployed Site (Using SandBox)](https://codesandbox.io/p/github/Keelen-Fisher/todo-app/main?file=%2FREADME.md)
 
 ## [Tests](./src/__tests__/)
 
