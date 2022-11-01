@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# Lab 31: Context API PHASE 1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## To Do List Manager Phase 1: Incorporate configuration settings to the application
 
-## Available Scripts
+- In this phase, we’ll be adding some top-level settings for the application, so that the user can make some display choices that the app will use by default.
 
-In the project directory, you can run:
+## Basics/Before you begin
 
-### `npm start`
+    - Create a new React app named todo-app
+    - Delete the existing src directory
+    - Paste in the src folder from the lab/starter-code
+    - npm install any missing dependencies by comparing package.json files. Note: installing most - recent versions is ideal.
+    - npm start and confirm that the application loads in the browser
+    - Create an EMPTY GitHub Repository named todo-app
+    - Follow GitHub instructions labeled “…or push an existing repository from the command line”
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Phase 1 Requirements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- In Phase 1, we’re going to perform some refactoring of the To Do application as built by another team. This application mixes application state and user settings at the top level and passes things around. It was a good proof of concept, but we need to make this production ready.
 
-### `npm test`
+  - Style the application using the Mantine Component API{target:_blank}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - Properly modularize the application into separate components
 
-### `npm run build`
+  - Implement the Context API to make some basic application settings available to components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    - How many To Do Items to show at once
+    - Hide completed items
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technical Requirements / Notes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Implement the React context API for defining settings across the entire application.
+  - Create a context for managing application display settings and provide this at the application level.
+  - Display or Hide completed items (boolean).
+  - Number of items to display per screen (number).
+  - Default sort field (string).
+  - Manually set (hard code) those state settings in the context provider’s state, they should not be changeable.
 
-### `npm run eject`
+- Consume and utilize context values throughout your components
+  - Show a maximum of a certain number of items per screen in the <List /> component
+    - Use the Mantine Pagination component to let the users navigate a long list of items
+  - Hide completed items in the list (the ability to show will be added in a later lab)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pagination Notes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Only display the first n items in the list, where n is the number to display per screen in your settings context.
+  - If you have more than n items in the list, the Pagination Component will add a button that, when clicked, will replace the list with the next n items in the list.
+  - the Pagination Component will also manage the previous (<) and next(>) arrow buttons upon correct implementation.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Application Structure (Proposed)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ├── public
+    ├── src
+    │   ├── __tests__
+    │   │   │   └── empty for now...
+    │   ├── Components
+    │   │   ├── AddForm
+    │   │   │   └── AddForm.jsx
+    │   │   ├── Footer
+    │   │   │   └── Footer.jsx
+    │   │   ├── Header
+    │   │   │   └── Header.jsx
+    │   │   ├── List
+    │   │   │   └── List.jsx
+    │   │   ├── ToDo
+    │   │   │   └── ToDo.jsx
+    │   │   │   └── styles.scss  
+    │   ├── Context
+    │   │   ├── Settings
+    │   │   │   └── Settings.jsx
+    │   │   │   └── settings.test.js
+    │   ├── hooks
+    │   │   └── form.js
+    │   ├── App.js
+    │   ├── index.js
+    ├── .gitignore
+    ├── package-lock.json
+    ├── package.json
+    └── README.md
 
-## Learn More
+## Expected React Output, via UML
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![UML](public/assets/UML%20Rough%20Draft%20for%20Lab%2031.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Deployment
 
-### Code Splitting
+[Linked to Deployed Site (Using SandBox)]()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## [Tests](./src/__tests__/)
 
-### Analyzing the Bundle Size
+## [PR Link]()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Resources
 
-### Making a Progressive Web App
+- Example of the complete React App. [Link](https://todo-401-js.netlify.app/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Mantine UI Recourses [HOME](https://mantine.dev/pages/getting-started/)
 
-### Advanced Configuration
+- [Mantine Grid](https://mantine.dev/core/grid/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [Mantine Card](https://mantine.dev/core/card/)
 
-### Deployment
+- [Mantine TextInput](https://mantine.dev/core/text-input/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Mantine Slider](https://mantine.dev/core/slider/)
