@@ -86,6 +86,20 @@
 
 [Linked to Deployed Site (Using SandBox)]()
 
-## [Tests]()
+## [Tests](./src/__tests__/)
 
 ## [PR Link]()
+
+## Resources
+
+- Example of the complete React App. [Link](https://todo-401-js.netlify.app/)
+
+- Mantine UI Recourses [HOME](https://mantine.dev/pages/getting-started/)
+
+- [Mantine Grid](https://mantine.dev/core/grid/)
+
+- [Mantine Card](https://mantine.dev/core/card/)
+
+- [Mantine TextInput](https://mantine.dev/core/text-input/)
+
+- [Mantine Slider](https://mantine.dev/core/slider/)

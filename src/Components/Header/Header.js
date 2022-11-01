@@ -6,9 +6,10 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
     borderBottom: 0,
     color: theme.white,
+    padding: theme.spacing.md,
     fontSize: theme.fontSizes.lg,
     fontWeight: 500,
-    
+    marginBottom: '0px'
   },
 
   inner: {
