@@ -1,6 +1,7 @@
-import { createStyles, Header, Container, Navbar, Text } from '@mantine/core';
+import { createStyles, Header, Container, Navbar, Text, Group, NavLink } from '@mantine/core';
 import React from 'react';
-
+import { BrowserRouter } from 'react-router-dom/dist';
+import { Link } from 'react-router-dom'
 const useStyles = createStyles((theme) => ({
   navbar: {
     backgroundColor: theme.fn.variant({ color: theme.primaryColor }).background,
@@ -12,31 +13,23 @@ const useStyles = createStyles((theme) => ({
   },
 
   inner: {
-    height: 56,
-  },
-
-  h1: {
-    backgroundColor: theme.colors.gray[8],
+    textDecoration: 'none',
     color: theme.colors.gray[0],
-    fontSize: theme.fontSizes.xl,
-    fontWeight: 'bold',
-    margin: 'auto',
-    padding: theme.spacing.md,
-    width: '80%',
-
   },
+
 }));
 
 
-function HeaderUI () {
+function HeaderUI() {
   const { classes } = useStyles();
   return (
     <>
       <Header>
           <Navbar className={classes.navbar}>
-           <Text>
-            Home
-            </Text> 
+            <Group>  
+                <Link className={classes.inner} default to="/">Home</Link>
+                <Link className={classes.inner} to="/settings">Settings</Link>         
+            </Group>
           </Navbar>
       </Header>
     </>
