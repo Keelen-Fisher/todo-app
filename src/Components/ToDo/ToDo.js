@@ -88,6 +88,7 @@ const ToDo = () => {
             <form onSubmit={handleSubmit}>
 
               <TextInput
+                data-testidid="text-input"
                 mb="sm"
                 onChange={handleChange}
                 name="text"
@@ -95,6 +96,7 @@ const ToDo = () => {
                 label="To Do Item"
               />
               <TextInput
+                data-testidid="assignee-input"
                 mb="sm"
                 onChange={handleChange}
                 name="assignee"
@@ -103,6 +105,7 @@ const ToDo = () => {
               />
               <Text>Difficulty</Text>
               <Slider
+              data-testidid="difficulty-input"
                 mb="lg"
                 onChange={handleChange}
                 defaultValue={defaultValues.difficulty}
@@ -114,7 +117,7 @@ const ToDo = () => {
 
               <label>
                 {/* <button type="submit">Add Item</button> */}
-                <Button type="submit" color="blue">Add Item</Button>
+                <Button type="submit" color="blue" data-testidid="add-item">Add Item</Button>
               </label>
             </form>
           </Card>
