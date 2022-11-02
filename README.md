@@ -198,7 +198,7 @@
 
 ## [Test Files](./src/__tests__/)
 
-## [PR Link]()
+## [PR Link](https://github.com/Keelen-Fisher/todo-app/pull/6)
 
 ## Resources List
 
@@ -207,5 +207,3 @@
 - Mantine UI Recourses [HOME](https://mantine.dev/pages/getting-started/)
 
 - Mantine Switch [Link](https://mantine.dev/core/switch/)
-
--
