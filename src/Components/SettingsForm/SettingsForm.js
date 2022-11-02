@@ -46,38 +46,35 @@ const FormSet = () => {
     <>
       <h1 className={classes.h1}>Manage Settings</h1>
       <Grid style={{ width: '80%', margin: 'auto' }}>
-        
-          <Card>
+        <Card>
+          <Text className={classes.settingCss}>Update Settings</Text>
+
+          <Switch
+            onChange={(e) => setShowCompleted(e.currentTarget.checked)}
+            checked={showCompleted}
+            label="Show Completed ToDos"
+            md="sm"
+          />
+
+          {/* Number Bar? How to make that. */}
+
+          <TextInput
+            mb="sm"
+            onChange={(e) => setSort(e.target.value)}
+            placeholder={sort}
+            label="Sort Keyword"
+          />
+          <Button onClick={handleClick}>Show New Settings</Button>
+        </Card>
+
+        <Card>
+          <Card.Section>
             <Text className={classes.settingCss}>Update Settings</Text>
-
-            <Switch
-              onChange={(e) => setShowCompleted(e.currentTarget.checked)}
-              checked={showCompleted}
-              label="Show Completed ToDos"
-              md="sm"
-            />
-
-            {/* Number Bar? How to make that. */}
-
-            <TextInput
-              mb="sm"
-              onChange={(e) => setSort(e.target.value)}
-              placeholder={sort}
-              label="Sort Keyword"
-            />
-            <Button onClick={handleClick}>Show New Settings</Button>
-          </Card>
-       
-       
-          <Card>
-            <Card.Section>
-              <Text className={classes.settingCss}>Update Settings</Text>
-            </Card.Section>
-            {/* <Text m="sm">{showCompleted ? 'Show' : 'Hide'} Completed ToDos</Text>
+          </Card.Section>
+          {/* <Text m="sm">{showCompleted ? 'Show' : 'Hide'} Completed ToDos</Text>
             <Text m="sm">Items Per page:  {pageItems}</Text>
             <Text m="sm">Sort Keyword: {sort}</Text> */}
-          </Card>
-       
+        </Card>
       </Grid>
     </>
   )
