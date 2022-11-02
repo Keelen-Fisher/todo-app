@@ -10,12 +10,9 @@ export default class App extends React.Component {
       <>
         <BrowserRouter>
           <HeaderUI />
-          <ToDo />
           <Routes>
-          <Route path="/"  />
-        </Routes>
-        <Routes>
-          <Route path='/settings' element={<FormSet />} />
+          <Route path="/"  element={<ToDo/>} />
+          <Route path="/settings"  element={<FormSet/>} />
         </Routes>
           <Footer />
         </BrowserRouter>

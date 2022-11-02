@@ -3,10 +3,16 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import ToDo from '../Components/ToDo/ToDo';
 import App from '../../App';
 import Settings from '../../Context/Settings';
+import SettingsProvider from '../Context/Settings/Settings';
 
-describe('ToDo Component Tests', ()  => {
+describe('ToDo Component Tests', () => {
   test('render a header element as expected', () => {
-    render(<ToDo />);
+    render(
+      <SettingsProvider>
+        <ToDo />
+      </SettingsProvider>
+
+    );
 
     let header = screen.getByTestId('todo-header');
     let h1 = screen.getByTestId('todo-h1');
@@ -22,7 +28,7 @@ describe('ToDo Component Tests', ()  => {
         <App />
       </Settings>
     )
-    
+
     /* Setting the value of the input field to 'text Check' */
     const textCheck = screen.getByTestId('text-input')
     fireEvent.change(textCheck, { target: { value: 'text Check' } })
