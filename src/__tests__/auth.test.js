@@ -10,14 +10,35 @@ describe('Testing Auth Functionality', () => {
     render(
       <AuthProvider>
         <AuthContext.Consumer>
-          {auth => (
+          {
+          ({isLoggedIn, user}) => (
             <>
-              <p data-testid="isLoggedIn">{auth.isLoggedIn.toString()}</p>
-              <p data-testid="user">{typeof auth.user}</p>
+            <Login/>
+            <Auth capability="read">
+              <p data-testid="isLoggedIn">{isLoggedIn.toString()}</p>
+            </Auth>
+            <Auth>
+              <p data-testid="user"> {`${user.capabilities}`}</p>
+            </Auth>
             </>
           )}
         </AuthContext.Consumer>
       </AuthProvider>
-    )
+    );
+
+   const usernameInput = screen.getByPlaceholderText('Username');
+   const passwordInput = screen.getByPlaceholderText('Password');
+   const button = screen.getByText('Login');
+
+   fireEvent.change(usernameInput, {target: {value: 'admin'}});
+   fireEvent.change(passwordInput, {target: {value: 'ADMIN'}});
+   fireEvent.click(button);
+
+   let authorized = screen.getByTestId('test-read');
+   let notAuthorized = screen.getByTestId('test-delete');
+
+   expect(authorized).toHaveTextContext()
+   expect(notAuthorized).toHaveTextContent()
+   
   })
 });
