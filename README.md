@@ -194,13 +194,15 @@
 
 ## Deployed Site
 
-[Linked to Deployed Site (Using SandBox)](https://codesandbox.io/p/github/Keelen-Fisher/todo-app/main?file=%2FREADME.md)
+[Linked to Deployed Site (Using SandBox)](https://codesandbox.io/p/github/Keelen-Fisher/todo-app/context-methods?file=%2FREADME.md)
 
 ## [Test Files](./src/__tests__/)
 
 ## [PR Link](https://github.com/Keelen-Fisher/todo-app/pull/6)
 
 ## Resources List
+
+- Modified Code with the help of Class33 Lecture
 
 - Example of the complete React App. [Link](https://todo-401-js.netlify.app/)
 

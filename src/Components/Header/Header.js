@@ -2,6 +2,7 @@ import { createStyles, Header, Container, Navbar, Text, Group, NavLink } from '@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom/dist';
 import { Link } from 'react-router-dom'
+import Login from '../Login';
 const useStyles = createStyles((theme) => ({
   navbar: {
     backgroundColor: theme.fn.variant({ color: theme.primaryColor }).background,
@@ -25,6 +26,7 @@ function HeaderUI() {
   return (
     <>
       <Header>
+        <Login/>
           <Navbar className={classes.navbar}>
             <Group>  
                 <Link className={classes.inner} default to="/">Home</Link>
