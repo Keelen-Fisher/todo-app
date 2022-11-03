@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { SettingsContext } from "../../Context/Settings/Settings";
 import { Card, Group, Badge, CloseButton, Pagination, createStyles, Text } from "@mantine/core";
-import { When } from "react-if";
+import { Else, If, Then, When } from "react-if";
 
 const useStyles = createStyles((theme) => ({
   badge: {
@@ -13,6 +13,7 @@ const useStyles = createStyles((theme) => ({
 
 const List = ({ list, toggleComplete, deleteItem }) => {
   const { classes } = useStyles();
+  const {can} = require()
   const { pageItems, showCompleted } = useContext(SettingsContext)
   const [page, setPage] = useState(1)
 
@@ -29,6 +30,14 @@ const List = ({ list, toggleComplete, deleteItem }) => {
           <Card.Section withBorder>
             <Group position="apart">
               <Group position="left">
+                <If >
+                  <Then>
+
+                  </Then>
+                  <Else>
+
+                  </Else>
+                </If>
                 <Badge
                   data-testid={`${item.id}-complete`}
                   color={item.complete ? "red" : "green"}
