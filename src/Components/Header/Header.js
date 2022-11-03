@@ -26,13 +26,15 @@ function HeaderUI() {
   return (
     <>
       <Header>
-        <Login/>
-          <Navbar className={classes.navbar}>
-            <Group>  
-                <Link className={classes.inner} default to="/">Home</Link>
-                <Link className={classes.inner} to="/settings">Settings</Link>         
+        <Navbar className={classes.navbar}>
+          <Group position="apart">
+            <Group>
+              <Link className={classes.inner} default to="/">Home</Link>
+              <Link className={classes.inner} to="/settings">Settings</Link>
             </Group>
-          </Navbar>
+            <Login />
+          </Group>
+        </Navbar>
       </Header>
     </>
   );
