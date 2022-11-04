@@ -2,18 +2,22 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../Context/Auth/Auth';
 import { Else, If, Then } from 'react-if';
 import { Button, Group, TextInput } from '@mantine/core';
-
+import useForm from '../../hooks/form.js';
 
 const Login = () => {
+  const [defaultValues] = useState({});
   const { login, logout, isLoggedIn } = useContext(AuthContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const { handleChange, handleSubmit } = useForm(handleLogin, defaultValues);
 
   // const handleLogout = () => {
   //   setUsername(''),
   //     setPassword(''),
   //   login(''),
   // }
+
+  function handleLogin(user) {
+    login(user.username, user.password);
+  }
 
   return (
     <>
@@ -22,17 +26,21 @@ const Login = () => {
           <Button color="red" onClick={login}>Log Out</Button>
         </Then>
         <Else>
-          <Group>
-            <TextInput
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
-            />
-            <TextInput
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-            />
-            <Button color="gray.8" onClick={() => login(username, password)}>Login</Button>
-          </Group>
+          <form onSubmit={handleSubmit}>
+            <Group>
+              <TextInput
+                onChange={handleChange}
+                placeholder="Username"
+                name="username"
+              />
+              <TextInput
+                 onChange={handleChange}
+                 type="password"
+                placeholder="Password"
+              />
+              <Button color="gray.8" type="submit">Login</Button>
+            </Group>
+          </form>
         </Else>
       </If>
 

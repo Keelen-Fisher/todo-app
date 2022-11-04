@@ -1,6 +1,5 @@
-import { createStyles, Header, Container, Navbar, Text, Group, NavLink } from '@mantine/core';
+import { createStyles, Header, Navbar, Group} from '@mantine/core';
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom/dist';
 import { Link } from 'react-router-dom'
 import Login from '../Login';
 const useStyles = createStyles((theme) => ({
@@ -25,7 +24,7 @@ function HeaderUI() {
   const { classes } = useStyles();
   return (
     <>
-      <Header>
+      <Header data-testid="todo-header">
         <Navbar className={classes.navbar}>
           <Group position="apart">
             <Group>

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { SettingsContext } from "../../Context/Settings/Settings";
 import { Card, Group, Badge, CloseButton, Pagination, createStyles, Text } from "@mantine/core";
 import { Else, If, Then, When } from "react-if";
-
+import Auth from './';
 const useStyles = createStyles((theme) => ({
   badge: {
     textTransform: 'capitalize',
@@ -13,10 +13,11 @@ const useStyles = createStyles((theme) => ({
 
 const List = ({ list, toggleComplete, deleteItem }) => {
   const { classes } = useStyles();
-  const {can} = require()
   const { pageItems, showCompleted } = useContext(SettingsContext)
   const [page, setPage] = useState(1)
 
+  /* Filtering the list based on the showCompleted value. If showCompleted is true, it will return the
+  list. If showCompleted is false, it will return the list filtered by items that are not complete. */
   const listToRender = showCompleted ? list : list.filter(item => !item.complete);
   const listStart = pageItems * (page - 1);
   const listEnd = listStart + pageItems;
@@ -44,21 +45,21 @@ const List = ({ list, toggleComplete, deleteItem }) => {
                   variant="filled"
                   className={classes.badge}
                   onClick={() => toggleComplete(item.id)}
-                  >
+                >
                   {item.complete ? 'Complete' : 'Pending'}
                 </Badge>
-                {/* <p>{item.text}</p> */}
+                
                 <Text data-testid={`${item.id}-assignee`}>{item.assignee}</Text>
               </Group>
 
               <Group>
-                <CloseButton
-                  title="delete todo item"
-                  onClick={() => deleteItem(item.id)} 
+                <Auth capability="delete">
+                  <CloseButton
+                    title="delete todo item"
+                    onClick={() => deleteItem(item.id)}
                   />
+                  </Auth>
               </Group>
-
-              <hr />
             </Group>
           </Card.Section>
           <Text data-testid={`${item.id}-text`} align="left" mt="sm">{item.text}</Text>
