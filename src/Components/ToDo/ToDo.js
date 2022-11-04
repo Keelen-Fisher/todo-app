@@ -105,7 +105,7 @@ const ToDo = () => {
               />
               <Text>Difficulty</Text>
               <Slider
-              data-testidid="difficulty-input"
+                data-testidid="difficulty-input"
                 mb="lg"
                 onChange={handleChange}
                 defaultValue={defaultValues.difficulty}

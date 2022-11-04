@@ -6,6 +6,7 @@ import HeaderUI from './Components/Header/Header.js';
 import { AuthContext } from './Context/Auth/Auth';
 import { When } from 'react-if';
 import Footer from './Components/Footer/Footer.js';
+import Auth from './Components/Auth';
 const App = () => {
   const { isLoggedIn } = useContext(AuthContext);
 
@@ -13,13 +14,15 @@ const App = () => {
     <>
       <BrowserRouter>
         <HeaderUI />
-        <When condition={isLoggedIn}>
-          <Routes>
-            <Route path="/" element={<ToDo />} />
-            <Route path="/settings" element={<FormSet />} />
-          </Routes>
+        <Auth capability="create">
+          <When condition={isLoggedIn}>
+            <Routes>
+              <Route path="/" element={<ToDo />} />
+              <Route path="/settings" element={<FormSet />} />
+            </Routes>
           </When>
-          <Footer />
+        </Auth>
+        <Footer />
       </BrowserRouter>
     </>
   );

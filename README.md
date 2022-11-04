@@ -322,3 +322,104 @@ In this final phase, we’ll be requiring that users be logged in, in order to s
 - Mantine Auth [Link](https://mantine.dev/core/switch/)
 
 - React Router [Link](https://www.youtube.com/watch?v=Ul3y1LXxzdU)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## ***Lab 34: Context API API Integration***
+
+## To Do List Manager Phase 4: Integrating with a live API
+
+- In this final phase, we’ll be requiring that users be logged in through a live authentication server, in order to see the to do items. Additionally, based on their user type, they will be allowed (or denied) to perform actions such as editing or deleting them. All To Do items will be stored in a database, accessed through a deployed API
+
+## Phase 4 Requirements
+
+- In Phase 4, we will finalize the functionality of the application by connecting to live servers for login, authorization, and data access
+
+## Technical Requirements /Notes
+
+> Technical requirements for the core application are unchanged from the prior phases, with the addition of Performing actual HTTP requests with an Authenticated API server:
+
+- Alter the Add, Toggle Complete, and Delete functions within your to do application to use your API instead of in memory state.
+  - Fetch the current list of items from the database on application start
+  - Whenever you add/update/delete an item, refresh the state so the user can instantly see the change
+    - Consider: Do you re-fetch from the server every time you make a change?
+      - If so, how?
+      - If not, how will you stay in sync?
+- Alter the Login Context to use the server to login users instead of our mock users list.
+  - Be sure to store the token in state as well as in a cookie so you can reference it later.
+
+## API Server
+
+- You will need deployed API Server, which implements a todo item data model
+  - GET /todo: Gets a list of all items
+  - ‘POST /todo’: Adds an item
+  - ‘PUT /todo’: Updates an item (you’ll use this to mark them as complete)
+  - ‘DELETE /todo/:id’ : Deletes an item
+
+## Authentication Server
+
+- You will need a deployed Authenticated API Server, which supports:
+  - Registration (`/signup`)
+  - Login (`/signin`)
+  - Authorization (via Bearer Token)
+  - ACL (using user roles)
+    - Make sure you have created the user roles and permissions lists that your front-end is expecting to tap into
+  - To Do data model for storing the actual to do items
+
+## Application Structure (proposed)
+
+    ├── public
+    ├── src
+    │   ├── __tests__
+    │   │   ├── auth.test.js
+    │   ├── Components
+    │   │   ├── AddForm
+    │   │   │   └── AddForm.jsx
+    │   │   ├── Auth
+    │   │   │   └── Auth.jsx
+    │   │   ├── Footer
+    │   │   │   └── Footer.jsx
+    │   │   ├── Header
+    │   │   │   └── Header.jsx
+    │   │   ├── List
+    │   │   │   └── List.jsx
+    │   │   ├── Login
+    │   │   │   └── Login.jsx
+    │   │   ├── SettingsForm
+    │   │   │   └── SettingsForm.jsx
+    │   │   ├── Todo
+    │   │   │   └── Todo.js
+    │   │   │   └── styles.scss  
+    │   ├── Context
+    │   │   ├── Auth
+    │   │   │   └── Auth.jsx
+    │   │   ├── Settings
+    │   │   │   └── Settings.jsx
+    │   │   │   └── settings.test.js
+    │   ├── hooks
+    │   │   └── axios.js
+    │   │   └── form.js
+    │   ├── App.js
+    │   ├── index.js
+    ├── .gitignore
+    ├── package-lock.json
+    ├── package.json
+    └── README.md
+
+## Code Sandbox Deployed Site
+
+[Linked to Deployed Site (Using SandBox)](https://codesandbox.io/p/github/Keelen-Fisher/todo-app/context-methods?file=%2FREADME.md)
+
+## [Tested Files](./src/__tests__/)
+
+## [PR Link:](https://github.com/Keelen-Fisher/todo-app/pull/11)
+
+## Resource List/ Credit
+
+- Modified Code with the help of Class34 Lecture
+
+- Example of the complete React App. [Link](https://todo-401-js.netlify.app/)
+
+- Mantine UI Recourses [HOME](https://mantine.dev/pages/getting-started/)
+
+- Mantine Auth [Link](https://mantine.dev/core/switch/)
